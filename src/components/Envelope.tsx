@@ -97,7 +97,7 @@ export default function Envelope() {
           justify-content: center;
 
           background-image:
-            url("/images/fondo-looney.jpg");
+            url("${import.meta.env.BASE_URL}images/fondo-looney.jpg");
 
           background-size: cover;
           background-position: center;
@@ -801,7 +801,7 @@ export default function Envelope() {
 
       <audio
         ref={audioRef}
-        src="/music/musica.mp3"
+        src={`${import.meta.env.BASE_URL}music/musica.mp3`}
         loop
         preload="auto"
       />

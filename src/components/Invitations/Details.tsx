@@ -19,7 +19,7 @@ export default function Details() {
         <div className="details-header">
           <div className="details-icon">
             <img
-              src="/images/hero/personajes.png"
+              src={`${import.meta.env.BASE_URL}images/hero/personajes.png`}
               alt=""
             />
           </div>
@@ -66,7 +66,7 @@ export default function Details() {
         <div className="location-card">
           <div className="location-character">
             <img
-              src="/images/hero/numero-1.png"
+              src={`${import.meta.env.BASE_URL}images/hero/numero-1.png`}
               alt=""
             />
           </div>

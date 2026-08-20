@@ -45,7 +45,7 @@ Somos ${people} ${people === 1 ? "persona" : "personas"}.
       <div className="confirmation-container">
         <div className="confirmation-characters">
           <img
-            src="/images/hero/personajes.png"
+            src={`${import.meta.env.BASE_URL}images/hero/personajes.png`}
             alt=""
           />
         </div>

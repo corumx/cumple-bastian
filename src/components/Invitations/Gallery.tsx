@@ -1,15 +1,15 @@
 const galleryItems = [
-  "/images/gallery/foto1.jpg",
-  "/images/gallery/foto2.jpeg",
-  "/images/gallery/foto3.jpeg",
-  "/images/gallery/foto4.jpg",
-  "/images/gallery/foto5.jpeg",
-  "/images/gallery/foto6.jpg",
-  "/images/gallery/foto7.jpg",
-  "/images/gallery/foto8.jpg",
-  "/images/gallery/foto9.jpeg",
-  "/images/gallery/foto10.jpg",
-  "/images/gallery/foto11.jpeg",
+  `${import.meta.env.BASE_URL}images/gallery/foto1.jpg`,
+  `${import.meta.env.BASE_URL}images/gallery/foto2.jpeg`,
+  `${import.meta.env.BASE_URL}images/gallery/foto3.jpeg`,
+  `${import.meta.env.BASE_URL}images/gallery/foto4.jpg`,
+  `${import.meta.env.BASE_URL}images/gallery/foto5.jpeg`,
+  `${import.meta.env.BASE_URL}images/gallery/foto6.jpg`,
+  `${import.meta.env.BASE_URL}images/gallery/foto7.jpg`,
+  `${import.meta.env.BASE_URL}images/gallery/foto8.jpg`,
+  `${import.meta.env.BASE_URL}images/gallery/foto9.jpeg`,
+  `${import.meta.env.BASE_URL}images/gallery/foto10.jpg`,
+  `${import.meta.env.BASE_URL}images/gallery/foto11.jpeg`,
 ];
 
 const items = [

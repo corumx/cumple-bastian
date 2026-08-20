@@ -38,7 +38,7 @@ export default function Hero() {
           </div>
 
           <img
-            src="/images/hero/bastian.png"
+            src={`${import.meta.env.BASE_URL}images/hero/bastian.png`}
             alt="Bastian"
             className="hero-bastian"
           />

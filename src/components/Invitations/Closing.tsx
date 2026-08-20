@@ -21,28 +21,28 @@ export default function Closing() {
 
       <div className="closing-character closing-character-top">
         <img
-          src="/images/characters/personajes.png"
+          src={`${import.meta.env.BASE_URL}images/characters/personajes.png`}
           alt=""
         />
       </div>
 
       <div className="closing-character closing-character-left">
         <img
-          src="/images/characters/personaje1.png"
+          src={`${import.meta.env.BASE_URL}images/characters/personaje1.png`}
           alt=""
         />
       </div>
 
       <div className="closing-character closing-character-right">
         <img
-          src="/images/characters/personaje2.png"
+          src={`${import.meta.env.BASE_URL}images/characters/personaje2.png`}
           alt=""
         />
       </div>
 
       <div className="closing-character closing-character-bottom">
         <img
-          src="/images/characters/personaje3.png"
+          src={`${import.meta.env.BASE_URL}images/characters/personaje3.png`}
           alt=""
         />
       </div>
