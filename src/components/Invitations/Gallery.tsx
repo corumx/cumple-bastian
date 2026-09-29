@@ -203,7 +203,7 @@ export default function Gallery() {
 
           animation:
             gallery-scroll
-            30s
+            24s
             linear
             infinite;
 
@@ -388,7 +388,7 @@ export default function Gallery() {
 
           .gallery-track {
             animation-duration:
-              24s;
+              18s;
           }
 
           .gallery-item {
