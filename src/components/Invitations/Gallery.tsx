@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+
 const galleryItems = [
   `${import.meta.env.BASE_URL}images/gallery/foto1.jpg`,
   `${import.meta.env.BASE_URL}images/gallery/foto2.jpeg`,
@@ -21,12 +23,229 @@ const items = [
 ];
 
 export default function Gallery() {
+  const trackRef =
+    useRef<HTMLDivElement | null>(null);
+
+  const positionRef =
+    useRef(0);
+
+  const loopWidthRef =
+    useRef(0);
+
+  const animationRef =
+    useRef<number | null>(null);
+
+  const draggingRef =
+    useRef(false);
+
+  const pointerIdRef =
+    useRef<number | null>(null);
+
+  const lastPointerXRef =
+    useRef(0);
+
+  // Velocidad automática
+  const speedRef =
+    useRef(1);
+
+  useEffect(() => {
+    const track =
+      trackRef.current;
+
+    if (!track) return;
+
+    const updateWidth = () => {
+      loopWidthRef.current =
+        track.scrollWidth / 2;
+    };
+
+    const updatePosition = () => {
+      const loopWidth =
+        loopWidthRef.current;
+
+      if (!loopWidth) return;
+
+      if (
+        positionRef.current <=
+        -loopWidth
+      ) {
+        positionRef.current +=
+          loopWidth;
+      }
+
+      if (
+        positionRef.current > 0
+      ) {
+        positionRef.current -=
+          loopWidth;
+      }
+
+      track.style.transform =
+        `translate3d(${positionRef.current}px, 0, 0)`;
+    };
+
+    const animate = () => {
+      if (!draggingRef.current) {
+        positionRef.current -=
+          speedRef.current;
+
+        updatePosition();
+      }
+
+      animationRef.current =
+        requestAnimationFrame(animate);
+    };
+
+    updateWidth();
+
+    window.addEventListener(
+      "resize",
+      updateWidth
+    );
+
+    const images =
+      track.querySelectorAll("img");
+
+    images.forEach((img) => {
+      img.addEventListener(
+        "load",
+        updateWidth
+      );
+    });
+
+    animationRef.current =
+      requestAnimationFrame(animate);
+
+    return () => {
+      if (
+        animationRef.current !== null
+      ) {
+        cancelAnimationFrame(
+          animationRef.current
+        );
+      }
+
+      window.removeEventListener(
+        "resize",
+        updateWidth
+      );
+
+      images.forEach((img) => {
+        img.removeEventListener(
+          "load",
+          updateWidth
+        );
+      });
+    };
+  }, []);
+
+  const handlePointerDown = (
+    event: React.PointerEvent<HTMLDivElement>
+  ) => {
+    draggingRef.current = true;
+
+    pointerIdRef.current =
+      event.pointerId;
+
+    lastPointerXRef.current =
+      event.clientX;
+
+    event.currentTarget.setPointerCapture(
+      event.pointerId
+    );
+
+    event.currentTarget.classList.add(
+      "is-dragging"
+    );
+  };
+
+  const handlePointerMove = (
+    event: React.PointerEvent<HTMLDivElement>
+  ) => {
+    if (
+      !draggingRef.current ||
+      event.pointerId !==
+        pointerIdRef.current
+    ) {
+      return;
+    }
+
+    const currentX =
+      event.clientX;
+
+    const difference =
+      currentX -
+      lastPointerXRef.current;
+
+    lastPointerXRef.current =
+      currentX;
+
+    positionRef.current +=
+      difference;
+
+    const loopWidth =
+      loopWidthRef.current;
+
+    if (
+      positionRef.current <=
+      -loopWidth
+    ) {
+      positionRef.current +=
+        loopWidth;
+    }
+
+    if (
+      positionRef.current > 0
+    ) {
+      positionRef.current -=
+        loopWidth;
+    }
+
+    if (trackRef.current) {
+      trackRef.current.style.transform =
+        `translate3d(${positionRef.current}px, 0, 0)`;
+    }
+  };
+
+  const handlePointerUp = (
+    event: React.PointerEvent<HTMLDivElement>
+  ) => {
+    if (
+      event.pointerId !==
+      pointerIdRef.current
+    ) {
+      return;
+    }
+
+    draggingRef.current =
+      false;
+
+    pointerIdRef.current =
+      null;
+
+    event.currentTarget.classList.remove(
+      "is-dragging"
+    );
+
+    try {
+      event.currentTarget.releasePointerCapture(
+        event.pointerId
+      );
+    } catch {}
+  };
+
   return (
     <section className="gallery-section">
-      <div className="gallery-header">
-        <p>MOMENTOS ESPECIALES</p>
 
-        <h2>Bastian</h2>
+      <div className="gallery-header">
+
+        <p>
+          MOMENTOS ESPECIALES
+        </p>
+
+        <h2>
+          Bastian
+        </h2>
 
         <span className="gallery-line" />
 
@@ -34,36 +253,70 @@ export default function Gallery() {
           Un añito lleno de momentos,
           sonrisas y mucho amor.
         </span>
+
       </div>
 
-      <div className="gallery-marquee">
-        <div className="gallery-track">
-          {items.map((image, index) => (
-            <div
-              className="gallery-item"
-              key={`${image}-${index}`}
-            >
-              <div className="gallery-image">
-                <img
-                  src={image}
-                  alt={`Bastian - foto ${index + 1}`}
-                />
-              </div>
+      <div
+        className="gallery-marquee"
+        onPointerDown={
+          handlePointerDown
+        }
+        onPointerMove={
+          handlePointerMove
+        }
+        onPointerUp={
+          handlePointerUp
+        }
+        onPointerCancel={
+          handlePointerUp
+        }
+      >
 
-              {index !== items.length - 1 && (
-                <div className="gallery-separator">
-                  ✦
+        <div
+          ref={trackRef}
+          className="gallery-track"
+        >
+
+          {items.map(
+            (image, index) => (
+              <div
+                className="gallery-item"
+                key={`${image}-${index}`}
+              >
+
+                <div className="gallery-image">
+
+                  <img
+                    src={image}
+                    alt={`Bastian - foto ${
+                      index + 1
+                    }`}
+                    draggable="false"
+                  />
+
                 </div>
-              )}
-            </div>
-          ))}
+
+                {index !==
+                  items.length - 1 && (
+                  <div className="gallery-separator">
+                    ✦
+                  </div>
+                )}
+
+              </div>
+            )
+          )}
+
         </div>
+
       </div>
 
       <div className="gallery-bottom">
+
         <span>🐰</span>
         <span>🐥</span>
         <span>🐷</span>
+
       </div>
 
       <style>{`
@@ -76,9 +329,7 @@ export default function Gallery() {
           margin: 0;
 
           padding:
-            50px
-            0
-            0;
+            50px 0 0;
 
           overflow: hidden;
 
@@ -106,17 +357,14 @@ export default function Gallery() {
           align-items: center;
 
           padding:
-            0
-            20px;
+            0 20px;
 
           text-align: center;
         }
 
         .gallery-header p {
           margin:
-            0
-            0
-            5px;
+            0 0 5px;
 
           color:
             #527D9A;
@@ -175,6 +423,14 @@ export default function Gallery() {
 
           overflow: hidden;
 
+          cursor: grab;
+
+          touch-action: pan-y;
+
+          user-select: none;
+
+          -webkit-user-select: none;
+
           -webkit-mask-image:
             linear-gradient(
               to right,
@@ -194,18 +450,16 @@ export default function Gallery() {
             );
         }
 
+        .gallery-marquee.is-dragging {
+          cursor: grabbing;
+        }
+
         .gallery-track {
           width: max-content;
 
           display: flex;
 
           align-items: center;
-
-          animation:
-            gallery-scroll
-            30s
-            linear
-            infinite;
 
           will-change:
             transform;
@@ -217,14 +471,9 @@ export default function Gallery() {
           align-items: center;
 
           gap: 18px;
-        }
 
-        /*
-         * IMPORTANTE:
-         * La altura es fija para todas las fotos.
-         * El ancho se calcula automáticamente según
-         * la proporción original de cada imagen.
-         */
+          flex-shrink: 0;
+        }
 
         .gallery-image {
           height: 340px;
@@ -274,15 +523,11 @@ export default function Gallery() {
 
           object-fit: contain;
 
-          transition:
-            transform
-            0.5s
-            ease;
-        }
+          pointer-events: none;
 
-        .gallery-image:hover img {
-          transform:
-            scale(1.03);
+          user-select: none;
+
+          -webkit-user-drag: none;
         }
 
         .gallery-separator {
@@ -300,6 +545,8 @@ export default function Gallery() {
             #FFD45C;
 
           font-size: 24px;
+
+          pointer-events: none;
         }
 
         .gallery-bottom {
@@ -321,27 +568,11 @@ export default function Gallery() {
             translateY(-5px);
         }
 
-        @keyframes gallery-scroll {
-
-          from {
-            transform:
-              translateX(0);
-          }
-
-          to {
-            transform:
-              translateX(-50%);
-          }
-
-        }
-
         @media (max-width: 600px) {
 
           .gallery-section {
             padding:
-              40px
-              0
-              0;
+              40px 0 0;
           }
 
           .gallery-header p {
@@ -386,34 +617,16 @@ export default function Gallery() {
               );
           }
 
-          .gallery-track {
-            animation-duration:
-            20s;
-          }
-
           .gallery-item {
             gap: 10px;
           }
 
-          /*
-           * Todas las fotos tienen la misma altura.
-           * El ancho depende de cada foto.
-           */
-
           .gallery-image {
             height: 250px;
-
-            width: auto;
 
             border-radius: 20px;
 
             border-width: 4px;
-          }
-
-          .gallery-image img {
-            height: 100%;
-
-            width: auto;
           }
 
           .gallery-separator {
@@ -443,16 +656,8 @@ export default function Gallery() {
 
         }
 
-        @media (prefers-reduced-motion: reduce) {
-
-          .gallery-track {
-            animation-play-state:
-              paused;
-          }
-
-        }
-
       `}</style>
+
     </section>
   );
 }
