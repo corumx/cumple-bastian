@@ -388,7 +388,7 @@ export default function Gallery() {
 
           .gallery-track {
             animation-duration:
-              18s;
+            20s;
           }
 
           .gallery-item {
