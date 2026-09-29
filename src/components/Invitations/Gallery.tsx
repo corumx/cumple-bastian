@@ -10,6 +10,9 @@ const galleryItems = [
   `${import.meta.env.BASE_URL}images/gallery/foto9.jpeg`,
   `${import.meta.env.BASE_URL}images/gallery/foto10.jpg`,
   `${import.meta.env.BASE_URL}images/gallery/foto11.jpeg`,
+  `${import.meta.env.BASE_URL}images/gallery/foto12.png`,
+  `${import.meta.env.BASE_URL}images/gallery/foto13.png`,
+  `${import.meta.env.BASE_URL}images/gallery/foto14.png`,
 ];
 
 const items = [
@@ -216,14 +219,23 @@ export default function Gallery() {
           gap: 18px;
         }
 
-        .gallery-image {
-          width: 210px;
+        /*
+         * IMPORTANTE:
+         * La altura es fija para todas las fotos.
+         * El ancho se calcula automáticamente según
+         * la proporción original de cada imagen.
+         */
 
-          height: 270px;
+        .gallery-image {
+          height: 340px;
+
+          width: auto;
 
           flex-shrink: 0;
 
           overflow: hidden;
+
+          display: block;
 
           border-radius: 28px;
 
@@ -247,16 +259,20 @@ export default function Gallery() {
               130,
               0.14
             );
+
+          aspect-ratio: auto;
         }
 
         .gallery-image img {
-          width: 100%;
-
           height: 100%;
+
+          width: auto;
+
+          max-width: none;
 
           display: block;
 
-          object-fit: cover;
+          object-fit: contain;
 
           transition:
             transform
@@ -266,7 +282,7 @@ export default function Gallery() {
 
         .gallery-image:hover img {
           transform:
-            scale(1.05);
+            scale(1.03);
         }
 
         .gallery-separator {
@@ -379,14 +395,25 @@ export default function Gallery() {
             gap: 10px;
           }
 
-          .gallery-image {
-            width: 145px;
+          /*
+           * Todas las fotos tienen la misma altura.
+           * El ancho depende de cada foto.
+           */
 
-            height: 190px;
+          .gallery-image {
+            height: 250px;
+
+            width: auto;
 
             border-radius: 20px;
 
             border-width: 4px;
+          }
+
+          .gallery-image img {
+            height: 100%;
+
+            width: auto;
           }
 
           .gallery-separator {
@@ -407,9 +434,7 @@ export default function Gallery() {
         @media (max-width: 380px) {
 
           .gallery-image {
-            width: 130px;
-
-            height: 175px;
+            height: 220px;
           }
 
           .gallery-separator {
