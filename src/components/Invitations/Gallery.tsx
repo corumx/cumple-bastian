@@ -203,7 +203,7 @@ export default function Gallery() {
 
           animation:
             gallery-scroll
-            24s
+            30s
             linear
             infinite;
 
