@@ -97,7 +97,7 @@ export default function Envelope() {
           justify-content: center;
 
           background-image:
-            url("${import.meta.env.BASE_URL}images/fondo-looney.jpg");
+            url("${import.meta.env.BASE_URL}images/fondo-looney.webp");
 
           background-size: cover;
           background-position: center;

@@ -105,8 +105,12 @@ export default function Countdown() {
         <div className="countdown-header">
           <div className="countdown-icon">
             <img
-    src={`${import.meta.env.BASE_URL}images/characters/personaje4.png`}
+    src={`${import.meta.env.BASE_URL}images/characters/personaje4.webp`}
     alt=""
+    loading="lazy"
+    decoding="async"
+    width={120}
+    height={120}
   />
           </div>
 

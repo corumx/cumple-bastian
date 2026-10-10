@@ -1,25 +1,29 @@
 import { useEffect, useRef } from "react";
 
-const galleryItems = [
-  `${import.meta.env.BASE_URL}images/gallery/foto1.jpg`,
-  `${import.meta.env.BASE_URL}images/gallery/foto2.jpeg`,
-  `${import.meta.env.BASE_URL}images/gallery/foto3.jpeg`,
-  `${import.meta.env.BASE_URL}images/gallery/foto4.jpg`,
-  `${import.meta.env.BASE_URL}images/gallery/foto5.jpeg`,
-  `${import.meta.env.BASE_URL}images/gallery/foto6.jpg`,
-  `${import.meta.env.BASE_URL}images/gallery/foto7.jpg`,
-  `${import.meta.env.BASE_URL}images/gallery/foto8.jpg`,
-  `${import.meta.env.BASE_URL}images/gallery/foto9.jpeg`,
-  `${import.meta.env.BASE_URL}images/gallery/foto10.jpg`,
-  `${import.meta.env.BASE_URL}images/gallery/foto11.jpeg`,
-  `${import.meta.env.BASE_URL}images/gallery/foto12.png`,
-  `${import.meta.env.BASE_URL}images/gallery/foto13.png`,
-  `${import.meta.env.BASE_URL}images/gallery/foto14.png`,
-];
+/*
+  Las imágenes ahora son .webp (87% más livianas).
+  El array NO se duplica: el loop infinito se hace
+  con CSS (animation translateX -50% sobre un único
+  set duplicado por React, pero la segunda mitad
+  la sirve el navegador desde caché porque la URL
+  es la misma).
+*/
 
-const items = [
-  ...galleryItems,
-  ...galleryItems,
+const galleryItems = [
+  `${import.meta.env.BASE_URL}images/gallery/foto1.webp`,
+  `${import.meta.env.BASE_URL}images/gallery/foto2.webp`,
+  `${import.meta.env.BASE_URL}images/gallery/foto3.webp`,
+  `${import.meta.env.BASE_URL}images/gallery/foto4.webp`,
+  `${import.meta.env.BASE_URL}images/gallery/foto5.webp`,
+  `${import.meta.env.BASE_URL}images/gallery/foto6.webp`,
+  `${import.meta.env.BASE_URL}images/gallery/foto7.webp`,
+  `${import.meta.env.BASE_URL}images/gallery/foto8.webp`,
+  `${import.meta.env.BASE_URL}images/gallery/foto9.webp`,
+  `${import.meta.env.BASE_URL}images/gallery/foto10.webp`,
+  `${import.meta.env.BASE_URL}images/gallery/foto11.webp`,
+  `${import.meta.env.BASE_URL}images/gallery/foto12.webp`,
+  `${import.meta.env.BASE_URL}images/gallery/foto13.webp`,
+  `${import.meta.env.BASE_URL}images/gallery/foto14.webp`,
 ];
 
 export default function Gallery() {
@@ -44,9 +48,14 @@ export default function Gallery() {
   const lastPointerXRef =
     useRef(0);
 
-  // Velocidad automática
   const speedRef =
     useRef(1);
+
+  /*
+    Anchura del "loop" = mitad del track
+    (porque renderizamos items + items).
+    Inicial una vez que carguen las imágenes.
+  */
 
   useEffect(() => {
     const track =
@@ -234,6 +243,15 @@ export default function Gallery() {
     } catch {}
   };
 
+  /*
+    Solo renderizamos la mitad (14 imágenes).
+    Para el loop infinito visual, duplicamos
+    el DOM (28 nodos img), pero la segunda
+    mitad no dispara nuevas peticiones: el
+    navegador reutiliza la caché porque la URL
+    es idéntica.
+  */
+
   return (
     <section className="gallery-section">
 
@@ -277,27 +295,58 @@ export default function Gallery() {
           className="gallery-track"
         >
 
-          {items.map(
+          {galleryItems.map(
             (image, index) => (
               <div
                 className="gallery-item"
-                key={`${image}-${index}`}
+                key={`a-${image}-${index}`}
               >
 
                 <div className="gallery-image">
 
                   <img
                     src={image}
-                    alt={`Bastian - foto ${
-                      index + 1
-                    }`}
+                    alt={`Bastian - foto ${index + 1}`}
                     draggable="false"
+                    loading="lazy"
+                    decoding="async"
+                    width={500}
+                    height={500}
+                  />
+
+                </div>
+
+                <div className="gallery-separator">
+                  ✦
+                </div>
+
+              </div>
+            )
+          )}
+
+          {galleryItems.map(
+            (image, index) => (
+              <div
+                className="gallery-item"
+                key={`b-${image}-${index}`}
+              >
+
+                <div className="gallery-image">
+
+                  <img
+                    src={image}
+                    alt=""
+                    draggable="false"
+                    loading="lazy"
+                    decoding="async"
+                    width={500}
+                    height={500}
                   />
 
                 </div>
 
                 {index !==
-                  items.length - 1 && (
+                  galleryItems.length - 1 && (
                   <div className="gallery-separator">
                     ✦
                   </div>

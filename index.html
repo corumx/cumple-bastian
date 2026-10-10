@@ -1,10 +1,36 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>cumple-bastian</title>
+    <meta name="theme-color" content="#5FB4D2" />
+    <meta
+      name="description"
+      content="Invitación al primer añito de Bastian. Te esperamos para celebrar juntos este día tan especial."
+    />
+
+    <!--
+      Precarga de imágenes críticas above-the-fold.
+      Esto le avisa al navegador que las pida YA,
+      en paralelo al HTML/CSS/JS, en vez de esperar
+      a que el React las descubra al montarse.
+    -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      href="/images/fondo-looney.webp"
+    />
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      href="/images/hero/bastian.webp"
+      fetchpriority="high"
+    />
+
+    <title>Bastian · Mi primer añito</title>
   </head>
   <body>
     <div id="root"></div>

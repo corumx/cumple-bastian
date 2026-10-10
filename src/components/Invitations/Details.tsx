@@ -19,8 +19,12 @@ export default function Details() {
         <div className="details-header">
           <div className="details-icon">
             <img
-              src={`${import.meta.env.BASE_URL}images/hero/personajes.png`}
+              src={`${import.meta.env.BASE_URL}images/hero/personajes.webp`}
               alt=""
+              loading="lazy"
+              decoding="async"
+              width={120}
+              height={120}
             />
           </div>
 
@@ -66,8 +70,12 @@ export default function Details() {
         <div className="location-card">
           <div className="location-character">
             <img
-              src={`${import.meta.env.BASE_URL}images/hero/numero-1.png`}
+              src={`${import.meta.env.BASE_URL}images/hero/numero-1.webp`}
               alt=""
+              loading="lazy"
+              decoding="async"
+              width={140}
+              height={140}
             />
           </div>
 

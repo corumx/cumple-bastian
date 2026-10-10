@@ -21,29 +21,45 @@ export default function Closing() {
 
       <div className="closing-character closing-character-top">
         <img
-          src={`${import.meta.env.BASE_URL}images/characters/personajes.png`}
+          src={`${import.meta.env.BASE_URL}images/characters/personajes.webp`}
           alt=""
+          loading="lazy"
+          decoding="async"
+          width={120}
+          height={80}
         />
       </div>
 
       <div className="closing-character closing-character-left">
         <img
-          src={`${import.meta.env.BASE_URL}images/characters/personaje1.png`}
+          src={`${import.meta.env.BASE_URL}images/characters/personaje1.webp`}
           alt=""
+          loading="lazy"
+          decoding="async"
+          width={120}
+          height={120}
         />
       </div>
 
       <div className="closing-character closing-character-right">
         <img
-          src={`${import.meta.env.BASE_URL}images/characters/personaje2.png`}
+          src={`${import.meta.env.BASE_URL}images/characters/personaje2.webp`}
           alt=""
+          loading="lazy"
+          decoding="async"
+          width={120}
+          height={120}
         />
       </div>
 
       <div className="closing-character closing-character-bottom">
         <img
-          src={`${import.meta.env.BASE_URL}images/characters/personaje3.png`}
+          src={`${import.meta.env.BASE_URL}images/characters/personaje3.webp`}
           alt=""
+          loading="lazy"
+          decoding="async"
+          width={120}
+          height={120}
         />
       </div>
 

@@ -28,8 +28,11 @@ export default function Hero() {
 
         <div className="hero-title">
           <img
-            src={`${import.meta.env.BASE_URL}images/hero/titulo-bastian.png`}
+            src={`${import.meta.env.BASE_URL}images/hero/titulo-bastian.webp`}
             alt="Bastian Rafael - Mi primer añito"
+            decoding="async"
+            width={700}
+            height={250}
           />
         </div>
 
@@ -41,9 +44,13 @@ export default function Hero() {
           </div>
 
           <img
-            src={`${import.meta.env.BASE_URL}images/hero/bastian.png`}
+            src={`${import.meta.env.BASE_URL}images/hero/bastian.webp`}
             alt="Bastian"
             className="hero-bastian"
+            fetchPriority="high"
+            decoding="async"
+            width={480}
+            height={480}
           />
 
           <div className="hero-one">
