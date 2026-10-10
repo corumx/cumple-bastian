@@ -62,7 +62,7 @@ export default function Details() {
             <div className="detail-card-content">
               <span className="detail-label">LUGAR</span>
               <strong>En mi casa</strong>
-              
+
             </div>
           </article>
         </div>
@@ -560,8 +560,8 @@ export default function Details() {
 
           /* IMAGEN MÁS PEQUEÑA EN CELULAR */
           .location-character {
-  width: 130px;
-  height: 115px;
+  width: 195px;
+  height: 135px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -569,10 +569,12 @@ export default function Details() {
 }
 
 .location-character img {
-  width: 85px;
-  height: auto;
+  width: 165px;
+  height: 110px;
+  max-width: 100%;
   display: block;
   object-fit: contain;
+  object-position: center bottom;
 }
           .location-content {
             width: 100%;
