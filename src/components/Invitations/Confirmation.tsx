@@ -134,7 +134,7 @@ Somos ${people} ${people === 1 ? "persona" : "personas"}.
           position: relative;
           width: 100%;
           margin: 0;
-          padding: 45px 0 50px;
+          padding: 45px 0 5px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -395,7 +395,7 @@ Somos ${people} ${people === 1 ? "persona" : "personas"}.
 
         @media (max-width:600px) {
           .confirmation-section {
-            padding: 35px 0 40px;
+            padding: 35px 0 0px;
           }
 
           .confirmation-container {

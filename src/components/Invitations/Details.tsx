@@ -105,7 +105,7 @@ export default function Details() {
 
         <div className="details-message">
           <p>
-            Será un día muy especial y nos encantaría
+            Será un día muy especial y nos encantaría{' '}
             <br className="desktop-break" />
             compartirlo con vos.
           </p>
@@ -448,7 +448,7 @@ export default function Details() {
         /* TABLET */
         @media (max-width: 700px) {
           .details-container {
-            padding: 45px 18px 50px;
+            padding: 45px 18px 1px;
           }
 
           .details-grid {
@@ -536,18 +536,18 @@ export default function Details() {
 
           .details-container {
             width: 100%;
-            padding: 40px 15px 35px;
+            padding: 40px 15px 0;
           }
 
           .details-icon {
-            width: 180px;
-            height: 125px;
+            width: 220px;
+            height: 215px;
             margin-bottom: 17px;
           }
 
           .details-icon img {
-            width: 175px;
-            height: 120px;
+            width: 220px;
+            height: 175x;
           }
 
           .details-header p {
@@ -669,7 +669,7 @@ export default function Details() {
           }
 
           .details-message {
-            margin-top: 25px;
+            margin-top: 15px;
           }
 
           .desktop-break {

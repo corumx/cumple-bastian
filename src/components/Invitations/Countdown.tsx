@@ -123,7 +123,7 @@ export default function Countdown() {
           </h2>
 
           <p className="countdown-description">
-            Estamos contando los días para celebrar
+            Estamos contando los días para celebrar{' '}
             <br />
             el primer añito de Bastian.
           </p>
@@ -744,9 +744,9 @@ export default function Countdown() {
           }
 
           .countdown-icon {
-            width: 55px;
-            height: 55px;
-            margin-bottom: 8px;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 12px;
             font-size: 28px;
           }
 

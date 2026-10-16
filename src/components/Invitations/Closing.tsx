@@ -11,24 +11,8 @@ export default function Closing() {
         <span />
       </div>
 
-      <div className="closing-star closing-star-1">
-        ✦
-      </div>
-
-      <div className="closing-star closing-star-2">
-        ✦
-      </div>
-
-      <div className="closing-character closing-character-top">
-        <img
-          src={`${import.meta.env.BASE_URL}images/characters/personajes.webp`}
-          alt=""
-          loading="lazy"
-          decoding="async"
-          width={120}
-          height={80}
-        />
-      </div>
+      <div className="closing-star closing-star-1">✦</div>
+      <div className="closing-star closing-star-2">✦</div>
 
       <div className="closing-character closing-character-left">
         <img
@@ -64,9 +48,18 @@ export default function Closing() {
       </div>
 
       <div className="closing-container">
-        <p className="closing-small">
-          ¡GRACIAS POR ACOMPAÑARNOS!
-        </p>
+        <div className="closing-character-top">
+          <img
+            src={`${import.meta.env.BASE_URL}images/characters/personajes.webp`}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            width={120}
+            height={80}
+          />
+        </div>
+
+        <p className="closing-small">¡GRACIAS POR ACOMPAÑARNOS!</p>
 
         <h2>
           Este día será
@@ -77,7 +70,7 @@ export default function Closing() {
         <span className="closing-line" />
 
         <p className="closing-text">
-          Gracias por ser parte del primer añito
+          Gracias por ser parte del primer añito{' '}
           <br className="desktop-break" />
           de nuestro pequeño Bastian.
         </p>
@@ -87,9 +80,7 @@ export default function Closing() {
           <strong>1 añito</strong>
         </div>
 
-        <div className="closing-hearts">
-          💙 ✨ 💙
-        </div>
+        <div className="closing-hearts">💙 ✨ 💙</div>
       </div>
 
       <style>{`
@@ -97,17 +88,16 @@ export default function Closing() {
           position: relative;
           width: 100%;
           margin: 0;
-          padding: 120px 20px 75px;
+          padding: 20px 20px 75px;
           display: flex;
           align-items: center;
           justify-content: center;
           overflow: hidden;
-          background:
-            linear-gradient(
-              180deg,
-              #e9f8fc 0%,
-              #a9dceb 100%
-            );
+          background: linear-gradient(
+            180deg,
+            #e9f8fc 0%,
+            #a9dceb 100%
+          );
           font-family: "Fredoka", sans-serif;
           box-sizing: border-box;
         }
@@ -122,15 +112,28 @@ export default function Closing() {
           text-align: center;
         }
 
+        .closing-character-top {
+          position: relative;
+          width: 190px;
+          height: 100px;
+          margin-bottom: 10px;
+          pointer-events: none;
+        }
+
+        .closing-character-top img {
+          width: 100%;
+          height: 100%;
+          display: block;
+          object-fit: contain;
+        }
+
         .closing-small {
           margin: 0 0 7px;
           color: #416b82;
           font-size: 13px;
           font-weight: 700;
           letter-spacing: 1.7px;
-          text-shadow:
-            0 1px 1px
-            rgba(255, 255, 255, 1);
+          text-shadow: 0 1px 1px rgba(255, 255, 255, 1);
         }
 
         .closing-container h2 {
@@ -139,9 +142,7 @@ export default function Closing() {
           font-size: clamp(36px, 6vw, 55px);
           font-weight: 800;
           line-height: 1.05;
-          text-shadow:
-            2px 2px 0
-            rgba(255, 255, 255, 0.85);
+          text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.85);
         }
 
         .closing-line {
@@ -198,16 +199,6 @@ export default function Closing() {
           object-fit: contain;
         }
 
-        /* PERSONAJE SUPERIOR */
-        .closing-character-top {
-          top: 15px;
-          left: 50%;
-          width: 190px;
-          height: 100px;
-          transform: translateX(-50%);
-        }
-
-        /* PERSONAJE IZQUIERDO */
         .closing-character-left {
           left: 3%;
           bottom: 20%;
@@ -216,7 +207,6 @@ export default function Closing() {
           transform: rotate(-5deg);
         }
 
-        /* PERSONAJE DERECHO */
         .closing-character-right {
           right: 3%;
           bottom: 19%;
@@ -225,7 +215,6 @@ export default function Closing() {
           transform: rotate(5deg);
         }
 
-        /* PERSONAJE INFERIOR */
         .closing-character-bottom {
           left: 50%;
           bottom: -20px;
@@ -239,8 +228,7 @@ export default function Closing() {
           width: 160px;
           height: 55px;
           border-radius: 999px;
-          background:
-            rgba(255, 255, 255, 0.35);
+          background: rgba(255, 255, 255, 0.35);
           z-index: 1;
         }
 
@@ -248,8 +236,7 @@ export default function Closing() {
           position: absolute;
           display: block;
           border-radius: 50%;
-          background:
-            rgba(255, 255, 255, 0.35);
+          background: rgba(255, 255, 255, 0.35);
         }
 
         .closing-cloud span:first-child {
@@ -281,11 +268,7 @@ export default function Closing() {
           color: #ffd45c;
           font-size: 25px;
           z-index: 2;
-          animation:
-            closing-float
-            4s
-            ease-in-out
-            infinite;
+          animation: closing-float 4s ease-in-out infinite;
         }
 
         .closing-star-1 {
@@ -310,19 +293,15 @@ export default function Closing() {
           }
         }
 
-        /* TABLET */
         @media (max-width: 700px) {
           .closing-section {
-            padding:
-              105px
-              15px
-              65px;
+            padding: 15px 15px 65px;
           }
 
           .closing-character-top {
-            top: 10px;
             width: 160px;
             height: 90px;
+            margin-bottom: 8px;
           }
 
           .closing-character-left {
@@ -361,10 +340,7 @@ export default function Closing() {
           }
 
           .closing-text {
-            margin:
-              15px
-              0
-              20px;
+            margin: 15px 0 20px;
             font-size: 14px;
           }
 
@@ -394,31 +370,27 @@ export default function Closing() {
           }
         }
 
-        /* CELULARES PEQUEÑOS */
         @media (max-width: 400px) {
           .closing-section {
-            padding:
-              100px
-              12px
-              60px;
-          }
-
-          .closing-character-left {
-            left: -30px;
-            width: 80px;
-            height: 95px;
-          }
-
-          .closing-character-right {
-            right: -30px;
-            width: 85px;
-            height: 95px;
+            padding: 10px 12px 60px;
           }
 
           .closing-character-top {
-            top: 10px;
-            width: 145px;
+            width: 140px;
             height: 80px;
+            margin-bottom: 6px;
+          }
+
+          .closing-character-left {
+            left: -25px;
+            width: 85px;
+            height: 100px;
+          }
+
+          .closing-character-right {
+            right: -25px;
+            width: 90px;
+            height: 100px;
           }
 
           .closing-character-bottom {
