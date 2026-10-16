@@ -61,7 +61,7 @@ export default function Details() {
 
             <div className="detail-card-content">
               <span className="detail-label">LUGAR</span>
-              <strong>En mi casa</strong>
+              <strong>El Sheriff Eventos</strong>
 
             </div>
           </article>
@@ -92,7 +92,7 @@ export default function Details() {
             </p>
 
             <a
-              href="https://maps.app.goo.gl/ADRKpYSbWw9MDeF9A"
+              href="https://maps.app.goo.gl/7oTFdS5CzUudCNks9"
               target="_blank"
               rel="noopener noreferrer"
               className="location-button"
@@ -475,6 +475,58 @@ export default function Details() {
         }
 
         /* CELULAR */
+        
+        /* CELULARES PEQUEÑOS */
+        @media (max-width: 380px) {
+          .details-container {
+            padding: 35px 12px 30px;
+          }
+
+          .details-icon {
+            width: 170px;
+            height: 115px;
+          }
+
+          .details-icon img {
+            width: 165px;
+            height: 110px;
+          }
+
+          .details-header h2 {
+            font-size: 32px;
+          }
+
+          .detail-card {
+            min-height: 95px;
+          }
+
+          .detail-card strong {
+            font-size: 17px;
+          }
+
+          /* IMAGEN TODAVÍA MÁS PEQUEÑA */
+          .location-character {
+            width: 140px;
+            height: 105px;
+          }
+
+          .location-character img {
+            width: 135px;
+          }
+
+          .location-content > span {
+            font-size: 25px;
+          }
+
+          .location-content strong {
+            font-size: 17px;
+          }
+
+          .location-content p {
+            font-size: 13px;
+          }
+        }
+        /* CELULAR (600px) */
         @media (max-width: 600px) {
           .details-section {
             min-height: auto;
@@ -549,59 +601,71 @@ export default function Details() {
           /* TARJETA DE UBICACIÓN */
           .location-card {
             width: 100%;
-            flex-direction: column;
+            max-width: 370px;
+            margin: 20px auto 0;
+            padding: 16px 12px;
+            display: flex;
+            flex-direction: row;
             align-items: center;
-            text-align: center;
-            padding: 22px 16px 20px;
-            margin-top: 20px;
-            gap: 8px;
+            justify-content: center;
+            gap: 6px;
             border-radius: 24px;
           }
 
-          /* IMAGEN MÁS PEQUEÑA EN CELULAR */
+          /* IMAGEN DEL 1 */
           .location-character {
-  width: 195px;
-  height: 135px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.location-character img {
-  width: 165px;
-  height: 110px;
-  max-width: 100%;
-  display: block;
-  object-fit: contain;
-  object-position: center bottom;
-}
-          .location-content {
-            width: 100%;
+            width: 110px;
+            height: 165px;
+            flex-shrink: 0;
+            display: flex;
             align-items: center;
+            justify-content: center;
+            border-radius: 0;
+          }
+
+          .location-character img {
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            display: block;
+            object-fit: contain;
+          }
+
+          /* CONTENIDO Y TEXTOS */
+          .location-content {
+            flex: 1;
+            width: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
           }
 
           .location-content > span {
-            font-size: 27px;
+            font-size: 20px;
+            line-height: 1.1;
+            white-space: nowrap;
           }
 
           .location-content strong {
-            max-width: 300px;
-            font-size: 18px;
-            line-height: 1.2;
+            max-width: 100%;
+            font-size: 13px;
+            line-height: 1.25;
+            margin-top: 3px;
           }
 
           .location-content p {
-            max-width: 280px;
-            margin: 5px auto 12px;
-            font-size: 14px;
-            line-height: 1.35;
+            max-width: 100%;
+            margin: 4px 0 10px;
+            font-size: 11px;
+            line-height: 1.3;
           }
 
           .location-button {
-            margin-top: 5px;
-            padding: 9px 17px;
-            font-size: 13px;
+            margin-top: 0;
+            padding: 7px 14px;
+            font-size: 11px;
+            white-space: nowrap;
           }
 
           .details-message {
@@ -621,7 +685,7 @@ export default function Details() {
           }
         }
 
-        /* CELULARES PEQUEÑOS */
+        /* CELULARES PEQUEÑOS (380px) */
         @media (max-width: 380px) {
           .details-container {
             padding: 35px 12px 30px;
@@ -649,26 +713,41 @@ export default function Details() {
             font-size: 17px;
           }
 
-          /* IMAGEN TODAVÍA MÁS PEQUEÑA */
+          /* AJUSTES DE TARJETA EN 380px */
+          .location-card {
+            padding: 14px 8px;
+            gap: 4px;
+          }
+
+          /* IMAGEN MÁS ALTA Y ESTILIZADA PARA NO APLASTARSE */
           .location-character {
-            width: 140px;
-            height: 105px;
+            width: 95px;
+            height: 145px;
+            flex-shrink: 0;
           }
 
           .location-character img {
-            width: 135px;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
           }
 
           .location-content > span {
-            font-size: 25px;
+            font-size: 18px;
           }
 
           .location-content strong {
-            font-size: 17px;
+            font-size: 12px;
           }
 
           .location-content p {
-            font-size: 13px;
+            font-size: 10.5px;
+            margin: 3px 0 8px;
+          }
+
+          .location-button {
+            padding: 6px 10px;
+            font-size: 10.5px;
           }
         }
       `}</style>
